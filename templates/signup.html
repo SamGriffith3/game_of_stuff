@@ -7,7 +7,9 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
     <link href="../static/signup.css" rel="stylesheet">
-    <link href="..static/js.js" rel="script">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+           integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+           crossorigin="anonymous"></script>
 
   </head>
 
@@ -35,12 +37,23 @@
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
 
-        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button" onclick="signUpFunction()">Sign up</button>
-        <script> $(signUpFunction() {
-            $('#btnSignUp').click(function() {
+        <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Sign up!</button>
+
+      </form>
+      </div>
+
+
+
+      <footer class="footer">
+        <p>&copy; Sam Griffith 2017</p>
+      </footer>
+
+    </div>
+  <script>$(function() {
+    $('#btnSignUp').click(function() {
 
         $.ajax({
-            url: '/signUp',
+            url: '/postsignup',
             data: $('form').serialize(),
             type: 'POST',
             success: function(response) {
@@ -53,15 +66,5 @@
     });
 });
 </script>
-      </form>
-      </div>
-
-
-
-      <footer class="footer">
-        <p>&copy; Sam Griffith 2017</p>
-      </footer>
-
-    </div>
   </body>
 </html>
