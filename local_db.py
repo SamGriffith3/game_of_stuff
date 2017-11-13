@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Integer, Column, String
+from sqlalchemy import create_engine, Integer, Column, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -23,4 +23,7 @@ class Cards():
   
   id = Column(Integer, primary_key=True)
   card = Column(String)
+  rating_g = Column(Boolean)
+  rating_t = Column(Boolean)
+  rating_r = Column(Boolean)
   
