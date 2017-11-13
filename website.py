@@ -1,6 +1,6 @@
 # Imports
 from flask import Flask, render_template, request, json, g
-
+from app import local_db
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 
 
+# APP.ROUTEs
 @app.route("/")
 def main():
     return render_template('index.html')
@@ -24,7 +25,7 @@ def post_sign_up():
     _email = request.form['inputEmail']
     _password = request.form['inputPassword']
 
-    # TODO Make this hashed password code readable
+    # TODO Make this hashed password code readable...did I? Oh PyCharm tell me I did...
 
     _hashed_password = generate_password_hash(_password)
     cursor.callproc('sp_createUser', (_name, _email, _hashed_password))
@@ -42,8 +43,8 @@ def post_sign_up():
 def show_login():
     return render_template('login.html')
 
-
-@app.route('/postlogin')
+# TODO have Chris check this. Totally made this up.
+@app.route('/postlogin', methods=['POST']
 def login():
     email = request.form['inputEmail']
     password = request.form['inputPassword']
@@ -51,8 +52,15 @@ def login():
     
 def authentication():
     email, password = login()
-    
+    checked_password = check_password_hash(password)
+    if email, checked_password in User():
+         conn.commit()
+         return json.dumps({'message' : 'User Authenticated !'})
+    else:
+         return json.dumps({'message' : 'User Authentication Failed !'})
+    return render_template('gameplay.html')
 
 
+#Calling the Program
 if __name__ == "__main__":
     app.run()
