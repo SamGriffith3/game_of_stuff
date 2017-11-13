@@ -1,17 +1,14 @@
 # Imports
 from flask import Flask, render_template, request, json, g
-from sqlalchemy import create_engine, Integer, Column, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
 # App Setup
 app = Flask(__name__)
 
-Base = declarative_base()
-Session = sessionmaker()
-session = Session()
+
+
 
 
 class User(Base):
@@ -56,6 +53,17 @@ def post_sign_up():
 @app.route('/login')
 def show_login():
     return render_template('login.html')
+
+
+@app.route('/postlogin')
+def login():
+    email = request.form['inputEmail']
+    password = request.form['inputPassword']
+    return email, password
+    
+def authentication():
+    email, password = login()
+    
 
 
 if __name__ == "__main__":
