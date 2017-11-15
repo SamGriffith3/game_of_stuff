@@ -37,9 +37,33 @@ def choose_card():
 def write_response():
     choose_card()
     response = input(c + " : ")
-  	return response
+  	return response, c
+    
+
+def turn():
+    response, c = write_response()
+    card_responses = {}
+    user = session.query(Users.user_id)
+    card_responses.append(user: {c:card_responses})
+    return card_responses
     
     
+def create_new_card():
+    card = input(str("What's the STUFF?: "))
+    return card
+
+
+def select_card_rating():
+    card = create_new_card()
+    rating = input(str("Rated G, T, or R?: ")).lower().strip()
+    card_gen = Cards(card = card, rating = rating)
+    if rating in ["g", "t", "r"]:
+        session.add(card_gen)
+    else:
+        print("Please choose a valid rating for the STUFF")
+        select_card_rating()
+ 
+                          
 if __name__ == '__main__':
     write_response()
         
