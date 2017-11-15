@@ -1,0 +1,17 @@
+
+body {
+    padding-top: 45 px;
+    padding-bottom: 45 px;
+    padding-left: 20 px;
+    padding-right: 20 px;
+    }
+
+nav {
+    padding: 10%, 10%, 10%, 10%
+    font-color: blue;
+    background-color: red;
+    }
+header {
+    max-width: 80%;
+    max-height: 13%;
+ }

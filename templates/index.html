@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <title>Game of Stuff</title>
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel=stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/signup.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+           integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+           crossorigin="anonymous"></script>
 
 </head>
 <body>
-<div class=container">
-<div class="header"></div>
-<nav>
-    <ul class="nav nav-pills pull-right"></ul>
-</nav>
-<h3 class="text-muted">Game of Stuff</h3>
-</div>
+<div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" ><a href="/">Home</a></li>
+            <li role="presentation" class="active"><a href="login">Log In</a></li>
+            <li role="presentation" ><a href="signup">Sign Up</a></li>
+          </ul>
+        </nav>
+
+        <h3 class="text-muted">Python Flask App</h3>
+      </div>
 
 <div class="jumbotron">
     <h1>Login</h1>
@@ -37,8 +46,7 @@
                 <h4>Bucket List</h4>
                 <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
             </div>
-
-            <div class="col-lg-6">
+    <div class="col-lg-6">
                 <h4>Bucket List</h4>
                 <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
@@ -48,8 +56,17 @@
                 <h4>Bucket List</h4>
                 <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
             </div>
-        </div>
+    <div class="col-lg-6">
+                <h4>3rd row</h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
+                <h4>Bucket List</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+
+                <h4>Bucket List</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+           </div>
         <footer class="footer">
             <p>&copy; Sam Griffith 2017</p>
         </footer>

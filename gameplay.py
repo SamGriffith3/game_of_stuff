@@ -1,4 +1,6 @@
-from random import *
+from random import shuffle
+from local_db import *
+
 
 def flip_switch():
     switch = 1
@@ -7,31 +9,29 @@ def flip_switch():
     else:
         switch += 1
         
-        
+
+def choose_ratings():
+    g = 0
+    t = 0
+    r = 0
+    rating = input("Choose Rating: G, T, or R").lower().strip()
+    if rating in ["g", "t", "r"]:
+        return rating
+    else:
+        return choose_ratings()
+
+
 def choose_card():
-    used_cards = []
-    rating_filter = []
     switch = flip_switch()
-    if input("Include Rated G: y/n?") == "y" or "Y" rated_g = true 
-    if input("Include Rated T: y/n?") == "y" or "Y" rated_t = true 
-    if input("Include Rated R: y/n?") == "y" or "Y" rated_r = true 
+    rating = choose_ratings()
+    card_ids = [session.query(Cards).filter(Cards.rating == rating).all()]
+    shuffle(card_ids)
     while switch == 0:
-        query = session.query(cards).filter(cards.rated_g, cards.rated_t, cards.rated_r)
-        card = random(len(query))
-        #TODO make sure query results in list of ids
-        if card in used_cards:
-            continue
-        else:
-            flip_switch()
-            used_cards.append(card)
-            return card
-        
+        c = card_ids.pop(0)
+        print(c.card)
+        switch = flip_switch()
+        GameData.flip_card(True)
                 
-def flip_card():
-    card = choose_card()
-    
-    # This is where the code to access card database is stored
-    #Needs to select a card that has not been played
-    #print text
+
 
 
