@@ -38,10 +38,10 @@ def write_response():
     choose_card()
     response = input(c + " : ")
     create_table = Table ('responses', Base, Column('game_id', Integer, ForeignKey('game_data.id')), 
-                         Column('card_id', Integer),
+                         Column('prompt', Integer),
                          Column('responses', String))
-    
-    responses.responses.add(response)
+    session.add(prompt = c, responses = response)
+    session.commit()
     
     
 if __name__ == '__main__':
