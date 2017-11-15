@@ -31,7 +31,23 @@ def choose_card():
         print(c.card)
         switch = flip_switch()
         GameData.flip_card(True)
+        return c
                 
 
+def write_response():
+    choose_card()
+    response = input(c + " : ")
+    create_table = Table ('responses', Base, Column('game_id', Integer, ForeignKey('game_data.id')), 
+                         Column('card_id', Integer),
+                         Column('responses', String))
+    
+    responses.responses.add(response)
+    
+    
+if __name__ == '__main__':
+    write_response()
+        
+    
+    
 
 
