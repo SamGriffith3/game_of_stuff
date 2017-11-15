@@ -17,9 +17,9 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
-    name = Column(String)
-    email = Column(String)
-    password = Column(String)
+    name = Column(String(80)
+    email = Column(String(80))
+    password = Column(String(80))
     games = relationship(
         "GameData",
         secondary=association_table,
@@ -41,5 +41,5 @@ class Cards(Base):
     __tablename__ = 'cards'
 
     id = Column(Integer, primary_key=True)
-    card = Column(String)
-    rating = Column(String)
+    card = Column(String(80))
+    rating = Column(String(2))
