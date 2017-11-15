@@ -37,11 +37,7 @@ def choose_card():
 def write_response():
     choose_card()
     response = input(c + " : ")
-    create_table = Table ('responses', Base, Column('game_id', Integer, ForeignKey('game_data.id')), 
-                         Column('prompt', Integer),
-                         Column('responses', String))
-    session.add(prompt = c, responses = response)
-    session.commit()
+  	return response
     
     
 if __name__ == '__main__':
