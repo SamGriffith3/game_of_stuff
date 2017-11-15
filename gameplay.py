@@ -65,7 +65,7 @@ def select_card_rating():
  
                           
 if __name__ == '__main__':
-    write_response()
+    turn()
         
     
     
