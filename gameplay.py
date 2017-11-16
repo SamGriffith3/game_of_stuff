@@ -8,7 +8,7 @@ def flip_switch():
         switch -= 1
     else:
         switch += 1
-        
+
 
 def choose_ratings():
     g = 0
@@ -32,22 +32,27 @@ def choose_card():
         switch = flip_switch()
         GameData.flip_card(True)
         return c
-                
+
 
 def write_response():
-    choose_card()
+    c = choose_card()
     response = input(c + " : ")
-  	return response, c
-    
+    return response, c
 
-def turn():
+
+def turn(user_id):
     response, c = write_response()
     card_responses = {}
-    user = session.query(Users.user_id)
-    card_responses.append(user: {c:card_responses})
+    user = session.query(User).filter(User.user_id == user_id).one()
+    card_responses[user.name] = {"responses": card_responses, "c": c, "user": user}
     return card_responses
-    
-    
+
+
+def get_user():
+    users = session.query()
+
+
+
 def create_new_card():
     card = input(str("What's the STUFF?: "))
     return card
@@ -56,18 +61,14 @@ def create_new_card():
 def select_card_rating():
     card = create_new_card()
     rating = input(str("Rated G, T, or R?: ")).lower().strip()
-    card_gen = Cards(card = card, rating = rating)
     if rating in ["g", "t", "r"]:
+        card_gen = Cards(card=card, rating=rating)
         session.add(card_gen)
     else:
         print("Please choose a valid rating for the STUFF")
         select_card_rating()
- 
-                          
+
+
 if __name__ == '__main__':
-    turn()
-        
-    
-    
-
-
+    select_card_rating()
+    turn(1)

@@ -9,27 +9,28 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js"
            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
            crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>
-<div class="container">
+<heading>
+<div class="container-fluid">
       <div class="header clearfix">
         <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="/">Home</a></li>
-            <li role="presentation" class="active"><a href="login">Log In</a></li>
-            <li role="presentation" ><a href="signup">Sign Up</a></li>
+          <ul class="nav nav-pills pull-left">
+            <a class="btn btn-primary active" href="/" role="button">Home</a>
+            <a class="btn btn-primary" href="/login" role="button">Log In</a>
+            <a class="btn btn-primary" href="/signup" role="button">Sign Up</a></li>
           </ul>
         </nav>
 
         <h3 class="text-muted">Python Flask App</h3>
       </div>
-
+ </heading>
 <div class="jumbotron">
     <h1>Login</h1>
     <p class="lead"></p>
-    <p><a class="btn btn-lg btn-success" href="login" role="button">Log In Here!</a>
-    </p>
+    <p><a class="btn btn-lg btn-primary" href="login" role="button">Log In Here!</a>
     <h1>Sign Up</h1>
     <p class="lead"></p>
     <p><a class="btn btn-lg btn-success" href="signup" role="button">Sign Up Here!</a>
