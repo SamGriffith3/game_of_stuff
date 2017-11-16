@@ -30,7 +30,7 @@ def post_sign_up():
     new_user = User(name=_name, email=_email, password=_hashed_password)
     session.add(new_user)
     if len(data) is 0:
-        conn.commit()
+        session.commit()
         return json.dumps({'message': 'User created successfully !'})
     else:
         return json.dumps({'error': str(data[0])})
@@ -51,7 +51,7 @@ def authentication():
     email, password = login()
     checked_password = check_password_hash(password)
     if email and checked_password in User():
-         conn.commit()
+         session.commit()
          return json.dumps({'message' : 'User Authenticated !'})
     else:
          return json.dumps({'message' : 'User Authentication Failed !'})
