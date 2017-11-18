@@ -28,7 +28,7 @@
       <div class="jumbotron">
         <h1>Bucket List App</h1>
         <form class="form-signin">
-          {% block body %}
+          <script> {% block body %}
 {% if session['logged_in'] %}
 <p>You're logged in already!</p>
 {% else %}
@@ -38,7 +38,8 @@
   <input type="submit" value="Log in">
 </form>
 {% endif %}
-{% endblock %}
+{% endblock %} </script>
+          
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
