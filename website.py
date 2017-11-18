@@ -40,7 +40,7 @@ def post_sign_up():
 def show_login():
     return render_template('login.html')
 
-# TODO have Chris check this. Totally made this up.
+# TODO have Chris check this. Totally made this up. Also, does return current_user_id give me a good variable? How can I keep this cached?
 @app.route('/postlogin', methods=['POST'])
 def login():
     email = request.form['inputEmail']
@@ -51,10 +51,11 @@ def authentication():
     email, password = login()
     checked_password = check_password_hash(password)
     if email and checked_password in User():
-         session.commit()
-         return json.dumps({'message' : 'User Authenticated !'})
+        current_user_id = session.query(User).filter(User.email == email).one()
+        return current_user_id, json.dumps({'message' : 'User Authenticated !'})
+        session.commit()
     else:
-         return json.dumps({'message' : 'User Authentication Failed !'})
+        return json.dumps({'message' : 'User Authentication Failed !'})
     return render_template('gameplay.html')
 
 
