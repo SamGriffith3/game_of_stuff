@@ -1,10 +1,17 @@
 # Imports
-from flask import Flask, render_template, request, json, g
+from flask import Flask, render_template, request, json, g, Session
+from flask.ext.session import Session
 from werkzeug.security import generate_password_hash, check_password_hash
 from local_db import User, Cards, session
 
+
 # App Setup
-app = Flask(__name__)
+sess = Session()
+
+def create_app():
+    app = Flask(__name__)
+    sess.init_app(app)
+    return app
 
 
 # APP.ROUTEs
