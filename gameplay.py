@@ -40,6 +40,9 @@ def write_response():
     return response, c
 
 
+def get_game_id():
+    game_id = session.query(User).filter(User.user_id == user_id)
+
 def turn(user_id):
     response, c = write_response()
     card_responses = {}
@@ -48,11 +51,11 @@ def turn(user_id):
     return card_responses
 
 
-def get_user():
-    users = session.query()
-
-
-
+/* This section contains the code for creating and uploading a new card to the database
+    Currently this is set to update the universal card database
+    */
+    
+    
 def create_new_card():
     card = input(str("What's the STUFF?: "))
     return card
