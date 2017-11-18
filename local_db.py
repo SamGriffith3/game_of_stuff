@@ -13,12 +13,13 @@ association_table = Table('association', Base.metadata,
     Column('users_id', Integer, ForeignKey('users.user_id')),
     Column('game_data_id', Integer, ForeignKey('game_data.id')))
 
+
 class User(Base):
     __tablename__ = 'users'
 
     user_id = Column(Integer, primary_key=True)
-    name = Column(String(80))
-    email = Column(String(80))
+    name = Column(String(80), nullable=False)
+    email = Column(String(80), nullable=False)
     password = Column(String(80))
     games = relationship(
         "GameData",
@@ -29,7 +30,7 @@ class User(Base):
 class GameData(Base):
     __tablename__ = 'game_data'
 
-    id = Column(Integer, primary_key=True)
+    game_id = Column(Integer, primary_key=True)
     flip_card = Column(Boolean)
     users = relationship(
         "User",
@@ -40,7 +41,7 @@ class GameData(Base):
 class Cards(Base):
     __tablename__ = 'cards'
 
-    id = Column(Integer, primary_key=True)
+    card_id = Column(Integer, primary_key=True)
     card = Column(String(80))
     rating = Column(String(2))
 
