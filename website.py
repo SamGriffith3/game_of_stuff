@@ -49,6 +49,21 @@ def show_login():
 
 # TODO have Chris check this. Totally made this up. Also, does return current_user_id give me a good variable? How can I keep this cached?
 @app.route('/postlogin', methods=['POST'])
+def do_admin_login():
+    if request.form['password'] == 'password' and request.form['username'] == 'admin':
+        session['logged_in'] = True
+    else:
+        flash('wrong password!')
+    return home()
+
+
+def do_user_login():
+    if request.form['password'] == 'password' and request.form['username'] == '_name':
+        session['logged_in] = True
+    else:
+         flash('wrong password!')
+    return main()
+
 def login():
     email = request.form['inputEmail']
     password = request.form['inputPassword']
