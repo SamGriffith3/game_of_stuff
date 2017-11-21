@@ -10,62 +10,68 @@
     <link href="../static/signup.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.1.4.min.js">
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js">
+</head>
 
-  </head>
+<body>
+  <div class="container">
+    <div class="header">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation" ><a href="/">Home</a></li>
+          <li role="presentation" class="active"><a href="login">Log In</a></li>
+          <li role="presentation" ><a href="signup">Sign Up</a></li>
+          <li role="presentation" class="active"><a href="play">Play</a></li>
+        </ul>
+      </nav>
+     <h3 class="text-muted">Game of STUFF</h3>
+   </div>
 
-  <body>
-
-    <div class="container">
-      <div class="header">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" ><a href="/">Home</a></li>
-            <li role="presentation" class="active"><a href="login">Log In</a></li>
-            <li role="presentation" ><a href="signup">Sign Up</a></li>
-            <li role="presentation" class="active"><a href="play">Play</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Game of STUFF</h3>
-      </div>
-
-      <div class="jumbotron">
-        <nav>
-        <ul class="nav pull-right">
-        <div id="card">
-          <div class="front">
+   <div class="jumbotron">
+     <div class="row>
+       <div class="col-md-6">
+         <div id="card">
+           <div class="front">
             <h3>Game of STUFF</h3>
             <h2>Sign In</h2>
-          </div>
-          <div class="back">
-            <h1>Sign In</h1>
-              <form class="form-login">
-              <label for="inputEmail" class="sr-only">Email address</label>
-              <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-              <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
-              <button id="btnLogin" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
-              </form>
-      <div id="card">
-          <div class="front">
-            <h3>Game of STUFF</h3>
-            <h2>Sign In</h2>
-          </div>
-          <div class="back">
-            <h1>Sign In</h1>
-              <form class="form-signup">
-              <label for="inputName" class="sr-only">Name</label>
-              <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Your Name" required>
-              <label for="inputEmail" class="sr-only">Email address</label>
-              <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-              <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
-              <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Signup</button>
-              </form>
-          </div>
-      </ul>
-          </div>
-      </div>    
-     </div>
+           </div>
+         <div class="back">
+           <h1>Sign In</h1>
+             <form class="form-login">
+             <label for="inputEmail" class="sr-only">Email address</label>
+             <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+             <label for="inputPassword" class="sr-only">Password</label>
+             <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+             <button id="btnLogin" class="btn btn-lg btn-primary btn-block" type="button">Login</button>
+             </form>
+         </div>
+         <div id="card">
+           <div class="front">
+             <h3>Game of STUFF</h3>
+             <button id="btnSelectSignIn"</h2>
+           </div>
+           <div class="back">
+             <h1>Sign In</h1>
+               <form class="form-signup">
+               <label for="inputName" class="sr-only">Name</label>
+               <input type="name" name="inputName" id="inputName" class="form-control" placeholder="Your Name" required>
+               <label for="inputEmail" class="sr-only">Email address</label>
+               <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+               <label for="inputPassword" class="sr-only">Password</label>
+               <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+               <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" type="button">Signup</button>
+               </form>
+           </div>
+         </div>
+       </div>
+   </div>    
+      <div class="container">
+        <div class="jumbotron">
+          <div id="card">
+            <div class="front">
+              <
+              
+            
+                
     <p> Hopefully, up above will be two cards, side by side, that will flip when clicked in order to either Login or Signup</p>
 
 
