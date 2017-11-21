@@ -3,15 +3,24 @@ from flask import Flask, render_template, request, json, g, Session
 from flask.ext.session import Session
 from werkzeug.security import generate_password_hash, check_password_hash
 from local_db import User, Cards, session
+from flask-login import *
 
 
 # App Setup
 sess = Session()
+login_manager = LoginManager()
+login_manager.init_app(app)
+
 
 def create_app():
     app = Flask(__name__)
     sess.init_app(app)
     return app
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.get(user_id)
 
 
 # APP.ROUTEs
@@ -78,13 +87,21 @@ def authentication():
         session.commit()
     else:
         return json.dumps({'message' : 'User Authentication Failed !'})
-    return render_template('gameplay.html')
+    return render_template('index.html')
 
 
 @app.route('/sams')
-def sams():
+@login_required
+ def sams():
     return render_template('sams.html')
+                
+               
+@app.route('/gameplay')
+@login_required
+def gameplay():
+  return render_template('gameplay.html')
 
+                
 #Calling the Program
 if __name__ == "__main__":
     app.run()
