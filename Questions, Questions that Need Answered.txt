@@ -1,4 +1,1 @@
-flask_mysql... wtf?
-
-jquery. appropriate uses?
-
+Update Card Images
