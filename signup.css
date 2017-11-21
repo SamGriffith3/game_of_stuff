@@ -1,12 +1,10 @@
 heading {
     padding-top: 1 rem;
 }
-
 body {
   padding-top: 40px;
   padding-bottom: 40px;
 }
-
 .form-signin {
   max-width: 330px;
   padding: 14px;
@@ -30,6 +28,11 @@ body {
 }
 .form-signin .form-control:focus {
   z-index: 2;
+}
+.form-signin input[type="name"]{
+    margin-bottom: -1px;
+    border-bottom-right-radius: 25;
+    bprder-bottom-left-radius: 0;
 }
 .form-signin input[type="email"] {
   margin-bottom: -1px;
