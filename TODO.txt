@@ -1,5 +1,12 @@
-Create a GUI
-    *Radio Buttons
-    *Animated Card Flip
-    
-    
+
+Gameplay
+
+Step #1: A card is flipped
+Step #2: Everybody writes and submits their response
+Step #3: Answers are anonymously revealed
+Step #4: Player to the left of the "dealer" begins by guessing which one phrase was written by one other player. If this player guesses correctly, they earn a point, and eliminate the guessed player from having a turn to guess for the round. If/When the first player mis-guesses, their turn is over and it moves on to the next player. Note, if a player guesses themself, they are able to earn that point, but will no longer be allowed to guess
+Step #5: Once everybody has had a chance to guess, repeat the guessing until all responses have been correctly guessed
+
+Scoring:
+
+You earn 1 point for every response you appropriately match to a player (even yourself!). The game is over when a player has reached a total score of 15 points at the end of a round.  
