@@ -11,7 +11,7 @@ session = Session()
 
 association_table = Table('association', Base.metadata,
     Column('users_id', Integer, ForeignKey('users.user_id')),
-    Column('game_data_id', Integer, ForeignKey('game_data.id')))
+    Column('game_data_id', Integer, ForeignKey('game_data.game_id')))
 
 
 class User(Base):

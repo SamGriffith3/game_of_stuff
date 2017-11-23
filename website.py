@@ -1,26 +1,12 @@
 # Imports
-from flask import Flask, render_template, request, json, g, Session
-from flask.ext.session import Session
+from flask import Flask, render_template, request, json, g, Session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from local_db import User, Cards, session
-from flask-login import *
 
 
 # App Setup
 sess = Session()
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-
-def create_app():
-    app = Flask(__name__)
-    sess.init_app(app)
-    return app
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+app = Flask(__name__)
 
 
 # APP.ROUTEs
@@ -45,11 +31,11 @@ def post_sign_up():
     _hashed_password = generate_password_hash(_password)
     new_user = User(name=_name, email=_email, password=_hashed_password)
     session.add(new_user)
-    if len(data) is 0:
+    if len(new_user) is 0:
         session.commit()
         return json.dumps({'message': 'User created successfully !'})
     else:
-        return json.dumps({'error': str(data[0])})
+        return json.dumps({'error': str(new_user[0])})
 
 
 @app.route('/login')
@@ -63,41 +49,40 @@ def do_admin_login():
         session['logged_in'] = True
     else:
         flash('wrong password!')
-    return home()
+    return main()
 
 
 def do_user_login():
     if request.form['password'] == 'password' and request.form['username'] == '_name':
-        session['logged_in] = True
+        session['logged_in'] = True
     else:
          flash('wrong password!')
     return main()
+
 
 def login():
     email = request.form['inputEmail']
     password = request.form['inputPassword']
     return email, password
-    
+
+
 def authentication():
     email, password = login()
     checked_password = check_password_hash(password)
     if email and checked_password in User():
         current_user_id = session.query(User).filter(User.email == email).one()
-        return current_user_id, json.dumps({'message' : 'User Authenticated !'})
-        session.commit()
+        return current_user_id, json.dumps({'message': 'User Authenticated !'})
+
     else:
         return json.dumps({'message' : 'User Authentication Failed !'})
-    return render_template('index.html')
 
 
 @app.route('/sams')
-@login_required
- def sams():
+def sams():
     return render_template('sams.html')
                 
                
 @app.route('/gameplay')
-@login_required
 def gameplay():
   return render_template('gameplay.html')
 

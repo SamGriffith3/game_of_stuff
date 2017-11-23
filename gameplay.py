@@ -1,6 +1,8 @@
 from random import shuffle
 from local_db import *
 import time
+from flask import session as ses
+
 
 def flip_switch():
     switch = 1
@@ -54,28 +56,22 @@ def write_response():
         print('You Missed Your Chance!')
 
 
-def get_game_id():
-    game_id = session.query(User).filter(User.user_id == user_id)
-
 def turn(user_id):
     response, c = write_response()
     card_responses = {}
-    user = session.query(User).filter(User.user_id == user_id).one()
+    x = ses['user']
     card_responses[user.name] = {"responses": card_responses, "c": c, "user": user}
-    for response in card_responses[responses.response]:
-        x = [[response] for response in range(10)]
-        shuffle(x)
-        print x
-    return x
 
 
 def reveal_answers():
+    return "something"
     
 
 
-/* This section contains the code for creating and uploading a new card to the database
+    '''
+ This section contains the code for creating and uploading a new card to the database
     Currently this is set to update the universal card database
-    */
+    '''
     
     
 def create_new_card():
