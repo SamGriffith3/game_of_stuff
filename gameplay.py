@@ -60,7 +60,7 @@ def turn(user_id):
     response, c = write_response()
     card_responses = {}
     x = ses['user']
-    card_responses[user.name] = {"responses": card_responses, "c": c, "user": user}
+    card_responses[User.name] = {"responses": card_responses, "c": c, "user": user}
 
 
 def reveal_answers():

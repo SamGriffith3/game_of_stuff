@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask, render_template, request, json, g, flash
+from flask import Flask, render_template, request, json, g, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from local_db import User, Cards, session
 from flask import session as sess
@@ -31,8 +31,11 @@ def post_sign_up():
         new_user = User(name=name, email=email, password=_hashed_password)
         session.add(new_user)
         session.commit()
+        print("new user signed up!")
+        return redirect('/index.html')
     else:
-        return render_template('signup.html')
+        print("username already taken")
+        return render_template('login.html')
 
 
 @app.route('/login')

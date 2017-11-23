@@ -46,4 +46,5 @@ class Cards(Base):
     rating = Column(String(2))
 
 
+Base.metadata.create_all(engine)
 
