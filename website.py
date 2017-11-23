@@ -1,5 +1,5 @@
 # Imports
-from flask import Flask, render_template, request, json, g, redirect
+from flask import Flask, render_template, request, json, g, redirect, abort, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from local_db import User, Cards, session
 from flask import session as sess
@@ -32,10 +32,8 @@ def post_sign_up():
         session.add(new_user)
         session.commit()
         print("new user signed up!")
-        return redirect('/index.html')
-    else:
-        print("username already taken")
-        return render_template('login.html')
+        return "logged in!"
+    return abort(403)
 
 
 @app.route('/login')
