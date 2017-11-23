@@ -25,13 +25,14 @@ def post_sign_up():
     name = request.form['inputName']
     email = request.form['inputEmail']
     password = request.form['inputPassword']
-    if name == session.query(User.name) and email == session.query(User.email):
+    check = session.query(User).filter(User.email == email).one_or_none()
+    if not check:
         _hashed_password = generate_password_hash(password)
         new_user = User(name=name, email=email, password=_hashed_password)
         session.add(new_user)
         session.commit()
     else:
-        return render_template()
+        return render_template('signup.html')
 
 
 @app.route('/login')
