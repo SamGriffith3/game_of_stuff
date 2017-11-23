@@ -1,11 +1,11 @@
 # Imports
-from flask import Flask, render_template, request, json, g, Session, flash
+from flask import Flask, render_template, request, json, g, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from local_db import User, Cards, session
-
+from flask import session as sess
 
 # App Setup
-sess = Session()
+
 app = Flask(__name__)
 
 
@@ -22,20 +22,14 @@ def show_sign_up():
 
 @app.route('/postsignup', methods=['POST'])
 def post_sign_up():
-    _name = request.form['inputName']
-    _email = request.form['inputEmail']
-    _password = request.form['inputPassword']
+    name = request.form['inputName']
+    email = request.form['inputEmail']
+    password = request.form['inputPassword']
 
-    # TODO Make this hashed password code readable...did I? Oh PyCharm tell me I did...
-
-    _hashed_password = generate_password_hash(_password)
-    new_user = User(name=_name, email=_email, password=_hashed_password)
+    _hashed_password = generate_password_hash(password)
+    new_user = User(name=name, email=email, password=_hashed_password)
     session.add(new_user)
-    if len(new_user) is 0:
-        session.commit()
-        return json.dumps({'message': 'User created successfully !'})
-    else:
-        return json.dumps({'error': str(new_user[0])})
+    session.commit()
 
 
 @app.route('/login')
@@ -46,17 +40,17 @@ def show_login():
 @app.route('/postlogin', methods=['POST'])
 def do_admin_login():
     if request.form['password'] == 'password' and request.form['username'] == 'admin':
-        session['logged_in'] = True
+        sess['logged_in'] = True
     else:
         flash('wrong password!')
     return main()
 
 
 def do_user_login():
-    if request.form['password'] == 'password' and request.form['username'] == '_name':
-        session['logged_in'] = True
+    if request.form['password'] == 'password' and request.form['username'] == 'name':
+        sess['logged_in'] = True
     else:
-         flash('wrong password!')
+        flash('wrong password!')
     return main()
 
 
