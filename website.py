@@ -25,34 +25,26 @@ def post_sign_up():
     name = request.form['inputName']
     email = request.form['inputEmail']
     password = request.form['inputPassword']
-
-    #TODO make sure User is a new user
-
-    _hashed_password = generate_password_hash(password)
-    new_user = User(name=name, email=email, password=_hashed_password)
-    session.add(new_user)
-    session.commit()
+    if name == session.query(User.name) and email == session.query(User.email):
+        _hashed_password = generate_password_hash(password)
+        new_user = User(name=name, email=email, password=_hashed_password)
+        session.add(new_user)
+        session.commit()
+    else:
+        return render_template()
 
 
 @app.route('/login')
 def show_login():
     return render_template('login.html')
 
-# TODO have Chris check this
+
 @app.route('/postlogin', methods=['POST'])
-def do_admin_login():
-    if request.form['password'] == 'password' and request.form['username'] == 'admin':
-        sess['logged_in'] = True
-    else:
-        flash('wrong password!')
-    return main()
-
-
-def do_user_login():
-    if request.form['password'] == 'password' and request.form['username'] == 'name':
-        sess['logged_in'] = True
-    else:
-        flash('wrong password!')
+def do_login():
+    stored = session.query(User).filter(User.name == request.form['username']).one_or_none()
+    if stored:
+        if check_password_hash(stored.password, request.form['password']):
+            sess['logged_in'] = True
     return main()
 
 
