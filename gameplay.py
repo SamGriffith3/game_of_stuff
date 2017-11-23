@@ -1,6 +1,6 @@
 from random import shuffle
 from local_db import *
-
+import time
 
 def flip_switch():
     switch = 1
@@ -34,10 +34,24 @@ def choose_card():
         return c
 
 
+def countdown(t):
+    while t:
+        mins, secs = divmod(t, 30)
+        timeformat = '{:02d}:{:02d}'.format(mins, secs)
+        print(timeformat, end='\r')
+        time.sleep(1)
+        t -= 1
+    print('Time Is Up!\n\n\n\n\n')
+    
+    
 def write_response():
     c = choose_card()
-    response = input(c + " : ")
-    return response, c
+    timer = countdown(1)
+    if timer != 0:    
+        response = input(c + " : ")
+        return response, c
+    else:
+        print('You Missed Your Chance!')
 
 
 def get_game_id():
@@ -48,7 +62,15 @@ def turn(user_id):
     card_responses = {}
     user = session.query(User).filter(User.user_id == user_id).one()
     card_responses[user.name] = {"responses": card_responses, "c": c, "user": user}
-    return card_responses
+    for response in card_responses[responses.response]:
+        x = [[response] for response in range(10)]
+        shuffle(x)
+        print x
+    return x
+
+
+def reveal_answers():
+    
 
 
 /* This section contains the code for creating and uploading a new card to the database
