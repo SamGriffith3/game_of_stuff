@@ -26,6 +26,8 @@ def post_sign_up():
     email = request.form['inputEmail']
     password = request.form['inputPassword']
 
+    #TODO make sure User is a new user
+
     _hashed_password = generate_password_hash(password)
     new_user = User(name=name, email=email, password=_hashed_password)
     session.add(new_user)
@@ -36,7 +38,7 @@ def post_sign_up():
 def show_login():
     return render_template('login.html')
 
-# TODO have Chris check this. Totally made this up. Also, does return current_user_id give me a good variable? How can I keep this cached?
+# TODO have Chris check this
 @app.route('/postlogin', methods=['POST'])
 def do_admin_login():
     if request.form['password'] == 'password' and request.form['username'] == 'admin':
@@ -52,23 +54,6 @@ def do_user_login():
     else:
         flash('wrong password!')
     return main()
-
-
-def login():
-    email = request.form['inputEmail']
-    password = request.form['inputPassword']
-    return email, password
-
-
-def authentication():
-    email, password = login()
-    checked_password = check_password_hash(password)
-    if email and checked_password in User():
-        current_user_id = session.query(User).filter(User.email == email).one()
-        return current_user_id, json.dumps({'message': 'User Authenticated !'})
-
-    else:
-        return json.dumps({'message' : 'User Authentication Failed !'})
 
 
 @app.route('/sams')
